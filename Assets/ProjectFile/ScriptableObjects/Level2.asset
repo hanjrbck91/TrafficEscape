@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2677fc1e001d7b4688386fc3205c0b0, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
-  maxCarCount: 0
+  maxCarCount: 4

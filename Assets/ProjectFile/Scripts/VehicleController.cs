@@ -18,12 +18,12 @@ public class VehicleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnMouseDown()
     {
-        MoveVehicle();        
+        MoveVehicle();
     }
 
     public void MoveVehicle()
@@ -35,6 +35,24 @@ public class VehicleController : MonoBehaviour
     {
         rb.isKinematic = false;
         anim.Restart(true);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("CarCounter"))
+        {
+            if (LevelManager.Instance != null)
+            {
+                LevelManager.Instance.FinishedCars++;
+                SplineContainer maincontainer = anim.Container;
+                maincontainer.gameObject.SetActive(false);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                Debug.LogError("LevelManager.Instance is null. Make sure it's properly instantiated.");
+            }
+        }
     }
 
 

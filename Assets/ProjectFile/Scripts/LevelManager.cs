@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,17 +21,18 @@ public class LevelManager : MonoBehaviour
     }
     [SerializeField] private GameObject LevelWonWindow;
 
-    void Awake()
+    private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
+
+       // DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -56,4 +58,5 @@ public class LevelManager : MonoBehaviour
     {
         LevelWonWindow.SetActive(true);
     }
+
 }

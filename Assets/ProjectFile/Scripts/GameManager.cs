@@ -3,23 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
     public HealthManager healthmanager;
 
-    // Ensure GameManager is a proper singleton
-    private void Awake()
+
+    public void Start()
     {
-        if (Instance == null)
+        healthmanager = FindAnyObjectByType<HealthManager>();
+        if (healthmanager != null )
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            Debug.Log("HealthManager is not found");
         }
     }
-
     // Called when the application is about to quit
     private void OnApplicationQuit()
     {
@@ -51,5 +45,10 @@ public class GameManager : MonoBehaviour
     public void TakeDamage()
     {
         healthmanager.TakeDamage(5);
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }

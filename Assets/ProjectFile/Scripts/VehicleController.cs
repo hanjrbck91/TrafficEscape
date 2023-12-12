@@ -6,6 +6,7 @@ using UnityEngine.Splines;
 
 public class VehicleController : MonoBehaviour
 {
+    public GameManager gameManager;
     public static event Action carCollided;
     public GameObject directionMarkImage;
 
@@ -17,6 +18,13 @@ public class VehicleController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<SplineAnimate>();
+
+        // Find and store the GameManager script reference
+        gameManager = FindObjectOfType<GameManager>();
+        if (gameManager == null)
+        {
+            Debug.LogError("GameManager script not found in the scene.");
+        }
     }
 
     // Update is called once per frame
@@ -72,30 +80,30 @@ public class VehicleController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision");
+       
         var otherCar = collision.transform.GetComponent<VehicleController>();
         if (otherCar)
         {
+            Debug.Log("Collision");
             carCollided?.Invoke();
             //Destroy(carDriveSound);
             directionMarkImage.SetActive(true);
 
             anim.Pause();
             StartCoroutine(ReverseAnimation());
-            GameManager.Instance.TakeDamage();
+            gameManager.TakeDamage();
             Debug.Log("20 damage is taken due hitting other car");
         }
-        if (collision.transform.name.Contains("Pedestrian") || collision.transform.name.Contains("Bus"))
+        if (collision.transform.name.Contains("Pedestrian"))
         {
             carCollided?.Invoke();
             directionMarkImage.SetActive(true);
             anim.Pause();
             StartCoroutine(ReverseAnimation());
-            GameManager.Instance.TakeDamage();
+            gameManager.TakeDamage();
             Debug.Log("20 damage is taken");
         }
     }
-
     private IEnumerator ReverseAnimation()
     {
         float duration = anim.ElapsedTime;

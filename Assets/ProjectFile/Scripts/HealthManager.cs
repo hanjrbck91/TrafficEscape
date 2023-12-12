@@ -25,7 +25,7 @@ public class HealthManager : MonoBehaviour
         currentHealth -= damageAmount;
 
         // Ensure health doesn't go below zero
-        currentHealth = Mathf.Max(currentHealth, 0f);
+        //currentHealth = Mathf.Max(currentHealth, 0f);
         Debug.Log(currentHealth);
 
         // Update the UI slider

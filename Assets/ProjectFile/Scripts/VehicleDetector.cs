@@ -38,9 +38,6 @@ public class VehicleDetector : MonoBehaviour
     }
     private bool DetectCollition(Vector3 startPos, Vector3 endPos)
     {
-        Vector3 direction = (endPos - startPos).normalized; // Calculate the direction from start to end
-        float distance = Vector3.Distance(startPos, endPos); // Calculate the distance between start and end
-
         Debug.DrawLine(startPos, endPos, Color.black); // Draw the ray for visualization
 
         RaycastHit hit;

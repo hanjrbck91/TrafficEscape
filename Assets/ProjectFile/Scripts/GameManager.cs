@@ -4,6 +4,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public HealthManager healthmanager;
+    public PowerUps currentPowerUps = PowerUps.none;
+
+    #region Singleton
+
+    public static GameManager Instance;    
+
+    #endregion
 
 
     public void Start()
@@ -13,7 +20,26 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("HealthManager is not found");
         }
+        currentPowerUps = PowerUps.none;
     }
+    private void Awake()
+    {
+        Instance = this;
+    }
+    public enum PowerUps
+    {
+        Helicopter,
+        ReverseDirection,
+        none,
+    }
+
+    public void SetReverseDirection()
+    {
+        currentPowerUps = PowerUps.ReverseDirection;
+    }
+
+    
+
     // Called when the application is about to quit
     private void OnApplicationQuit()
     {

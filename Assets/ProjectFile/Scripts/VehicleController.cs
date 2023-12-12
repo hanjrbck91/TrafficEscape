@@ -9,6 +9,7 @@ public class VehicleController : MonoBehaviour
     public GameManager gameManager;
     public static event Action carCollided;
     public GameObject directionMarkImage;
+    public GameObject changedDirection;
 
     private Rigidbody rb;
     private SplineAnimate anim;
@@ -35,8 +36,46 @@ public class VehicleController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        MoveVehicle();
+        if (GameManager.Instance.currentPowerUps == GameManager.PowerUps.Helicopter)
+        {
+            // Handle helicopter power-up logic
+        }
+        else if (GameManager.Instance.currentPowerUps == GameManager.PowerUps.ReverseDirection)
+        {
+            ChangeSplineContainer();
+            Debug.Log("SplineDirection is Changed");
+            // Handle switch direction power-up logic
+        }
+        else
+        {
+            // Default logic when no power-up is active
+            MoveVehicle();
+        }
     }
+    [SerializeField]
+    SplineContainer Reversespline;
+    [SerializeField]
+    SplineContainer currentspline;
+    public void ChangeSplineContainer()
+    {
+        // Rotate the car by 180 degrees
+        //if(anim.Container != Reversespline)
+        //{
+        //    Vector3 carRotation = transform.rotation.eulerAngles;
+        //    carRotation.y += 180f;
+        //    transform.rotation = Quaternion.Euler(carRotation);
+        //}
+        anim.Container = Reversespline;
+        directionMarkImage.SetActive(false);
+        changedDirection.SetActive(true);
+            //directionMarkImage.GetComponent<SpriteRenderer>().sprite = SymbolManager.GetSymbol(symbolsType);
+            GameManager.Instance.currentPowerUps = GameManager.PowerUps.none; // Assuming you want to reset the power-up
+      
+    }
+
+
+    
+
 
     public void MoveVehicle()
     {
@@ -73,6 +112,7 @@ public class VehicleController : MonoBehaviour
         if (anim.Container.gameObject.GetComponent<VehicleDetector>().CheckIfPathIsClear())
         {
             directionMarkImage.SetActive(false);
+            changedDirection.SetActive(false);
             GetComponent<BoxCollider>().isTrigger = true;
             GetComponent<VehicleController>().enabled = false;
         }

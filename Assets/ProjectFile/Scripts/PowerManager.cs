@@ -10,4 +10,10 @@ public class PowerManager : MonoBehaviour
         GameManager.Instance.currentPowerUps = GameManager.PowerUps.ReverseDirection;
         Debug.Log("ReversePowerUp is activated");
     }
+
+    public void OnHelicopterButtonPressed()
+    {
+        GameManager.Instance.currentPowerUps = GameManager.PowerUps.Helicopter;
+        Debug.Log("helicopter PowerUp is activated");
+    }
 }

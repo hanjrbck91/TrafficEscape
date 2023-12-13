@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public HealthManager healthmanager;
     public PowerUps currentPowerUps = PowerUps.none;
+    public GameObject helicopter;
 
     #region Singleton
 
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("HealthManager is not found");
         }
         currentPowerUps = PowerUps.none;
+        helicopter = GameObject.Find("Helicopter");
     }
     private void Awake()
     {
@@ -38,7 +40,12 @@ public class GameManager : MonoBehaviour
         currentPowerUps = PowerUps.ReverseDirection;
     }
 
-    
+    public void Setuphelicopter()
+    {
+        currentPowerUps = PowerUps.Helicopter;
+    }
+
+
 
     // Called when the application is about to quit
     private void OnApplicationQuit()

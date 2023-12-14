@@ -180,6 +180,7 @@ public class VehicleController : MonoBehaviour
             if (LevelManager.Instance != null)
             {
                 LevelManager.Instance.FinishedCars++;
+                Debug.Log(LevelManager.Instance.FinishedCars);
                 SplineContainer maincontainer = anim.Container;
                 maincontainer.gameObject.SetActive(false);
                 gameObject.SetActive(false);

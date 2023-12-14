@@ -54,16 +54,18 @@ public class VehicleController : MonoBehaviour
         VehiclePosition = this.transform.position;
         VehiclePosition = VehiclePosition + offset;
 
-       
-       
+
+        
 
         if (GameManager.Instance.currentPowerUps == GameManager.PowerUps.Helicopter)
         {
+            PowerManager.Instance.DisableHelicopterPanel();
             MoveHelicopter();
             // Handle helicopter power-up logic
         }
         else if (GameManager.Instance.currentPowerUps == GameManager.PowerUps.ReverseDirection)
         {
+            PowerManager.Instance.DisableReverseDirectionPanel();
             ChangeSplineContainer();
             Debug.Log("SplineDirection is Changed");
             // Handle switch direction power-up logic
@@ -73,6 +75,7 @@ public class VehicleController : MonoBehaviour
             // Default logic when no power-up is active
             MoveVehicle();
         }
+
     }
     #region Helicopter Functions
     void MoveHelicopter()

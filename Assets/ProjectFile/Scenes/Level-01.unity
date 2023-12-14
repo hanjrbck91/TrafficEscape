@@ -809,6 +809,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3858499129993542341, guid: e65991be1cab56d4e99ab3786ec1a1cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977378744520901990, guid: e65991be1cab56d4e99ab3786ec1a1cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3895,13 +3903,13 @@ PrefabInstance:
       value: PowerUps
       objectReference: {fileID: 0}
     - target: {fileID: 1567762961882417012, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1311933329}
-    - target: {fileID: 1567762961882417012, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1567762961882417012, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1926403931}
     - target: {fileID: 4449640699870217538, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3983,13 +3991,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5749089377625267419, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 284974214}
-    - target: {fileID: 5749089377625267419, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5749089377625267419, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1926403931}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4118,6 +4126,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5307421384572430530, guid: 2991a1e2cd7d20140ad16b0a3b4343c8, type: 3}
   m_PrefabInstance: {fileID: 1309802357}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1926403931 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 800134977947901910, guid: db24fb49d7a3a794eb8e79a2dfecd786, type: 3}
+  m_PrefabInstance: {fileID: 8878108198084585968}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542f1ba23963ea4409cde9c91d09dce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1983718916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3130631059001871670, guid: 64041ef4284998d49aad1687a96d40b6, type: 3}
@@ -7141,6 +7160,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 800134977947901910, guid: db24fb49d7a3a794eb8e79a2dfecd786, type: 3}
+      propertyPath: HelicopterPanel
+      value: 
+      objectReference: {fileID: 1311933329}
+    - target: {fileID: 800134977947901910, guid: db24fb49d7a3a794eb8e79a2dfecd786, type: 3}
+      propertyPath: ReverseDirectionPanel
+      value: 
+      objectReference: {fileID: 284974214}
     - target: {fileID: 2403666453833094678, guid: db24fb49d7a3a794eb8e79a2dfecd786, type: 3}
       propertyPath: m_Name
       value: PowerManager

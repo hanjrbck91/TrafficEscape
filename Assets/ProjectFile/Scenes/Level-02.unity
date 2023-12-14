@@ -1809,6 +1809,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 800134977947901910, guid: db24fb49d7a3a794eb8e79a2dfecd786, type: 3}
+      propertyPath: HelicopterPanel
+      value: 
+      objectReference: {fileID: 2143246164}
+    - target: {fileID: 800134977947901910, guid: db24fb49d7a3a794eb8e79a2dfecd786, type: 3}
+      propertyPath: ReverseDirectionPanel
+      value: 
+      objectReference: {fileID: 144239757}
     - target: {fileID: 2403666453833094678, guid: db24fb49d7a3a794eb8e79a2dfecd786, type: 3}
       propertyPath: m_Name
       value: PowerManager
@@ -2195,6 +2203,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5307421384572430530, guid: 2991a1e2cd7d20140ad16b0a3b4343c8, type: 3}
   m_PrefabInstance: {fileID: 29133270}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &678322983 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 800134977947901910, guid: db24fb49d7a3a794eb8e79a2dfecd786, type: 3}
+  m_PrefabInstance: {fileID: 442337067}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542f1ba23963ea4409cde9c91d09dce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &691975801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7498,9 +7517,17 @@ PrefabInstance:
       value: PowerUps
       objectReference: {fileID: 0}
     - target: {fileID: 1567762961882417012, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 678322983}
+    - target: {fileID: 1567762961882417012, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 144239757}
+    - target: {fileID: 1567762961882417012, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnReverseButtonPressed
+      objectReference: {fileID: 0}
     - target: {fileID: 1776640905761434558, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 115
@@ -7586,9 +7613,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5749089377625267419, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 678322983}
+    - target: {fileID: 5749089377625267419, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2143246164}
+    - target: {fileID: 5749089377625267419, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHelicopterButtonPressed
+      objectReference: {fileID: 0}
     - target: {fileID: 5833714380015779600, guid: a2457ae4b1d4e3f49854476a6316075d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 115

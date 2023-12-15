@@ -1,17 +1,17 @@
-// LevelManager.cs
-using System;
-using System.Collections.Generic;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public static LevelManager Instance {  get; private set; }
+    public static LevelManager Instance { get; private set; }
 
     public LevelData CarCount;
     private int finishedCars;
     private int TotalCarToFinish;
+    [SerializeField] private GameObject confetteprefab;
+    private bool levelwon = false;
+    public ParticleSystem confette;
 
     // Property to access finishedCars with both getter and setter
     public int FinishedCars
@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
         get => finishedCars;
         set => finishedCars = value;
     }
+
     [SerializeField] private GameObject LevelWonWindow;
 
     private void Awake()
@@ -27,12 +28,8 @@ public class LevelManager : MonoBehaviour
         {
             Instance = this;
         }
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
 
-       // DontDestroyOnLoad(gameObject);
+        levelwon = false;
     }
 
     void Start()
@@ -43,12 +40,25 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
+        Invoke("StopParticleeffect", 5);
         CheckWinCondition();
+        if (levelwon)
+        {
+            confette.Play();
+            //confette.Emit(200);
+        }
+
+    }
+
+    private void StopParticleeffect()
+    {
+        levelwon = false;
+        confette.Stop();
     }
 
     private void CheckWinCondition()
     {
-        if(finishedCars >= TotalCarToFinish)
+        if (finishedCars >= TotalCarToFinish)
         {
             ActivateLevelWonPanel();
         }
@@ -57,6 +67,7 @@ public class LevelManager : MonoBehaviour
     private void ActivateLevelWonPanel()
     {
         LevelWonWindow.SetActive(true);
-    }
+        levelwon = true;
 
+    }
 }

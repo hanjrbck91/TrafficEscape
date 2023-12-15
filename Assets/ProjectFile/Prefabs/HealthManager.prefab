@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  GameOver: {fileID: 0}
+  GameOver: {fileID: 6982889285586538140, guid: 3387becbd0c3ce549a1815eac89b8f39, type: 3}
   healthSlider: {fileID: 0}

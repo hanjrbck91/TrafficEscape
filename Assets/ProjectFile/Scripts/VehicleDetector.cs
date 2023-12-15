@@ -44,17 +44,13 @@ public class VehicleDetector : MonoBehaviour
         if (Physics.Linecast(startPos, endPos, out hit)) // Perform the raycast
         {
             var controller = hit.collider.gameObject.GetComponent<VehicleController>();
-            if (controller || hit.transform.name.Contains("Blocker"))
+            if (controller)
             {
-                Debug.Log("<color=red> Detected Another Car Along the Path </color>");
+                Debug.Log("Collision is detected");
                 return false;
-            }
-            else
-            {
-                Debug.Log("<color=blue> Detected No Car Along the Path </color>");
+                
             }
         }
-        Debug.Log("<color=green> It is True </color>");
         return true;
     }
 }

@@ -61,6 +61,7 @@ public class VehicleController : MonoBehaviour
         {
             PowerManager.Instance.DisableHelicopterPanel();
             MoveHelicopter();
+            SoundManager.instance.PlayHelicopterSound();
             // Handle helicopter power-up logic
         }
         else if (GameManager.Instance.currentPowerUps == GameManager.PowerUps.ReverseDirection)
@@ -83,7 +84,6 @@ public class VehicleController : MonoBehaviour
 
         GameManager.Instance.helicopter.transform.position = new Vector3(28.1f, 81f, 180f);
         //GameManager.instance.isCarMoving = true;
-        //GameManager.instance.HelicopterCountNumber(); ;
         GameManager.Instance.helicopter.transform.DOMove(VehiclePosition, 3f, false)
             .OnComplete(MovementComplete);
     }
@@ -106,8 +106,11 @@ public class VehicleController : MonoBehaviour
 
         #endregion
 
+        GameManager.Instance.currentPowerUps = GameManager.PowerUps.none;
+        Debug.Log("Helicopter powerup is used");
+
         GameManager.Instance.helicopter.transform.DORotate(new Vector3(-90f, 210f, 0f), 1f);
-        GameManager.Instance.helicopter.transform.DOMove(SetHelicoperPosition(), 6f, false).OnComplete(HeliCopterReachedBack);
+        GameManager.Instance.helicopter.transform.DOMove(SetHelicoperPosition(), 4f, false).OnComplete(HeliCopterReachedBack);
 
         // Code to be executed after the movement is complete
         Debug.Log("Helicopter movement is Completed");
@@ -122,14 +125,10 @@ public class VehicleController : MonoBehaviour
                 child.gameObject.SetActive(false);
         }
         anim.gameObject.SetActive(false);
-        // Additional actions, if any
-        GameManager.Instance.currentPowerUps = GameManager.PowerUps.none;
-        Debug.Log("Helicopter powerup is used");
+        SoundManager.instance.StopHelicopterSound();
         //GameManager.Instance.helicopter.transform.DORotate(new Vector3(0f, 7f, 0f), 2f);
         //isHelicopterON = false;
         LevelManager.Instance.FinishedCars++; // Incrementing the finished car number
-        //GameManager.instance.isCarMoving = false;
-        //GameManager.instance.isHelicopterModeOn = false;
       
     }
 
@@ -185,6 +184,7 @@ public class VehicleController : MonoBehaviour
                 LevelManager.Instance.FinishedCars++;
                 Debug.Log(LevelManager.Instance.FinishedCars);
                 SplineContainer maincontainer = anim.Container;
+                SoundManager.instance.StopCarSound();
                 maincontainer.gameObject.SetActive(false);
                 gameObject.SetActive(false);
                 //carisMoving = false;
@@ -203,6 +203,7 @@ public class VehicleController : MonoBehaviour
         {
             directionMarkImage.SetActive(false);
             changedDirection.SetActive(false);
+            SoundManager.instance.PlayCarSound();
             //carisMoving = true;
             GetComponent<BoxCollider>().isTrigger = true;
             GetComponent<VehicleController>().enabled = false;
@@ -216,9 +217,15 @@ public class VehicleController : MonoBehaviour
         if (otherCar)
         {
             Debug.Log("Collision");
-            carCollided?.Invoke();
+            //carCollided?.Invoke();
+            SoundManager.instance.StopCarSound();
+            SoundManager.instance.PlayCarCollisionSound();
             //Destroy(carDriveSound);
-            directionMarkImage.SetActive(true);
+            if(anim.Container == currentspline)
+            {
+                directionMarkImage.SetActive(true);
+            }
+            
 
             anim.Pause();
             //carisMoving = false;
@@ -228,7 +235,7 @@ public class VehicleController : MonoBehaviour
         }
         if (collision.transform.name.Contains("Pedestrian"))
         {
-            carCollided?.Invoke();
+            //carCollided?.Invoke();
             directionMarkImage.SetActive(true);
             anim.Pause();
             StartCoroutine(ReverseAnimation());
@@ -246,6 +253,10 @@ public class VehicleController : MonoBehaviour
             anim.ElapsedTime -= Time.deltaTime;
             elapsedTime += Time.deltaTime;
             yield return null; // Wait for the next frame
+        }
+        if(elapsedTime < 0f)
+        {
+            SoundManager.instance.StopCollisonSound();
         }
     }
 }

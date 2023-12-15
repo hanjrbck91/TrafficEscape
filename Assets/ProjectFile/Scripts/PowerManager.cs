@@ -35,10 +35,12 @@ public class PowerManager : MonoBehaviour
     {
         Debug.Log("Disabling Helicopter Panel");
         HelicopterPanel.SetActive(false);
+        GameManager.Instance.currentPowerUps = GameManager.PowerUps.none;
     }
     public void DisableReverseDirectionPanel()
     {
         Debug.Log("Disabling Reverse Direction Panel");
         ReverseDirectionPanel.SetActive(false);
+        GameManager.Instance.currentPowerUps = GameManager.PowerUps.none;
     }
 }

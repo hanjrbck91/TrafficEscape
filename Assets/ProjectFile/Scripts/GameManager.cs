@@ -40,12 +40,10 @@ public class GameManager : MonoBehaviour
         currentPowerUps = PowerUps.ReverseDirection;
     }
 
-    public void Setuphelicopter()
-    {
-        currentPowerUps = PowerUps.Helicopter;
-    }
-
-
+    //public void Setuphelicopter()
+    //{
+    //    currentPowerUps = PowerUps.Helicopter;
+    //}
 
     // Called when the application is about to quit
     private void OnApplicationQuit()

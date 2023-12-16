@@ -182,7 +182,7 @@ public class VehicleController : MonoBehaviour
             if (LevelManager.Instance != null)
             {
                 LevelManager.Instance.FinishedCars++;
-                Debug.Log(LevelManager.Instance.FinishedCars);
+                Debug.Log("Finished Car count is :" + LevelManager.Instance.FinishedCars);
                 SplineContainer maincontainer = anim.Container;
                 SoundManager.instance.StopCarSound();
                 maincontainer.gameObject.SetActive(false);
